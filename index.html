@@ -9,7 +9,13 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Man vs Ape.json", {onProgress: UnityProgress});
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Man vs Ape.json", {onProgress:
+        UnityProgress, Module: {
+          onRuntimeInitialized: function () {
+              this.canvas.addEventListener("contextmenu", function (e) {
+                    e.preventDefault(); });
+                  },
+                }});
     </script>
   </head>
   <body>
